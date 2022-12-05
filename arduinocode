@@ -1,0 +1,24 @@
+int RELAY = 3;
+void setup() {
+  pinMode(RELAY, OUTPUT);
+  digitalWrite(RELAY, LOW);
+  Serial.begin(9600);
+  delay(1000);
+  Serial.println("Enter restart to restart ACSM"); 
+}
+void loop() {
+if (Serial.available() > 0) {
+  String input = Serial.readString();
+  if (input = "restart") { //geen == want dan moet je \n toevoegen.
+      digitalWrite(RELAY, HIGH);
+      Serial.println("ACSM power off");
+      delay(15000);
+      digitalWrite(RELAY, LOW);
+      Serial.println("ACSM power on");
+    }
+    else{
+      Serial.println("Invalid input!");
+    }
+  }
+  delay: (1000);
+}
